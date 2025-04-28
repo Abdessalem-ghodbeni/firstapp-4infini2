@@ -9,9 +9,10 @@ import { NotFoundPageComponent } from './not-found-page/not-found-page.component
 import { HeaderComponent } from './header/header.component';
 import { ListProduitComponent } from './list-produit/list-produit.component';
 import { DetailsProduitComponent } from './details-produit/details-produit.component';
+import { ResidenceComponent } from './residence/residence.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, NotFoundPageComponent, HeaderComponent, ListProduitComponent, DetailsProduitComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent, NotFoundPageComponent, HeaderComponent, ListProduitComponent, DetailsProduitComponent, ResidenceComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
