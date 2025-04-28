@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-4" *ngFor="let product of products">
+    <div class="card" style="width: 18rem; margin-bottom: 20px">
+      <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">
+          {{ product.category }}
+        </h6>
+        <p class="card-text">Prix: {{ product.price }} €</p>
+        <!-- <button
+          class="btn btn-primary"
+          [routerLink]="['/produit-details/', product.id]"
+        >
+          Voir détails
+        </button> -->
+        <button class="btn btn-primary" (click)="goDetails(product.id)">
+          Voir détails
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
