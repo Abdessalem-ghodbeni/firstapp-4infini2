@@ -1,0 +1,52 @@
+<div class="container">
+  <h1>Add Residence</h1>
+  <div>
+    <form [formGroup]="addResidenceForm">
+      <div class="mb-3">
+        <label for="exampleInputName1" class="form-label">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleInputName1"
+          formControlName="name"
+          aria-describedby="nameHelp"
+        />
+        <div
+          class="alert alert-danger m-1"
+          *ngIf="name?.errors?.['required'] && name?.touched"
+        >
+          Name is required.
+        </div>
+        <div
+          class="alert alert-danger m-1"
+          *ngIf="name?.errors?.['minlength'] && name?.touched"
+        >
+          Name must have at least 3 caracters.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputAddress1" class="form-label">Address</label>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleInputAddress1"
+          formControlName="address"
+        />
+        <div
+          class="alert alert-danger m-1"
+          *ngIf="address?.errors?.['required'] && address?.dirty"
+        >
+          Address is required.
+        </div>
+      </div>
+      <button
+        type="submit"
+        [disabled]="addResidenceForm.invalid"
+        class="btn btn-primary"
+        (click)="addResidence()"
+      >
+        Add
+      </button>
+    </form>
+  </div>
+</div>

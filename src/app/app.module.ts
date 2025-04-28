@@ -10,10 +10,25 @@ import { HeaderComponent } from './header/header.component';
 import { ListProduitComponent } from './list-produit/list-produit.component';
 import { DetailsProduitComponent } from './details-produit/details-produit.component';
 import { ResidenceComponent } from './residence/residence.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ResidenceDetailsComponent } from './residence-details/residence-details.component';
+import { AnnonceModule } from './annonce/annonce.module';
+import { AddResidenceComponent } from './add-residence/add-residence.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, NotFoundPageComponent, HeaderComponent, ListProduitComponent, DetailsProduitComponent, ResidenceComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    NotFoundPageComponent,
+    HeaderComponent,
+    ListProduitComponent,
+    DetailsProduitComponent,
+    ResidenceComponent,
+    ResidenceDetailsComponent,
+    AddResidenceComponent,
+  ],
+  imports: [BrowserModule, AnnonceModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

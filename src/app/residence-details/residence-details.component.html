@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Residence Details</h1>
+  <img src="{{ residence?.image }}" [alt]="residence?.name" />
+  <p><b>Id: </b> {{ id }}</p>
+  <p><b>Name: </b> {{ residence?.name }}</p>
+  <p><b>Address: </b> {{ residence?.address }}</p>
+  <p><b>Status: </b> {{ residence?.status }}</p>
+  <a routerLink="/residence" class="btn btn-link">Return to List</a>
+</div>

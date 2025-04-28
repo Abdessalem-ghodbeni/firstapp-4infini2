@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Residence } from '../core/models/residence';
 
 @Component({
-  selector: 'app-residence',
-  templateUrl: './residence.component.html',
-  styleUrls: ['./residence.component.scss'],
+  selector: 'app-residence-details',
+  templateUrl: './residence-details.component.html',
+  styleUrls: ['./residence-details.component.scss'],
 })
-export class ResidenceComponent {
-  search: string = '';
-  favoriteResidences: Residence[] = [];
+export class ResidenceDetailsComponent {
+  id!: number;
+  residence!: Residence
   listResidences: Residence[] = [
     {
       id: 1,
@@ -43,19 +44,12 @@ export class ResidenceComponent {
       addressEtat: false,
     },
   ];
-
-  showLocation(id: number) {
+  constructor(private activatedRoute: ActivatedRoute) {}
+  ngOnInit() {
+    this.id = this.activatedRoute.snapshot.params['id'];
     for (let i = 0; i < this.listResidences.length; i++) {
-      if (this.listResidences[i].id == id) {
-        this.listResidences[i].addressEtat = true;
-        if (this.listResidences[i].address == 'inconnu') {
-          alert('Address is unknown!!');
-        }
-      }
-    }
-  }
-
-  addToFavoriteList(residence: Residence) {
-    this.favoriteResidences.push(residence);
+      if (this.listResidences[i].id == this.id) {
+       this.residence= this.listResidences[i]
+      }}
   }
 }

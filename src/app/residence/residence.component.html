@@ -1,10 +1,66 @@
 <div class="container">
   <h1>Residence List</h1>
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Search residence"
+    [(ngModel)]="search"
+  /><br />
+  <a routerLink="/residence/add">Add Residence</a>
   <div class="row">
+    <div class="col-3" *ngFor="let residence of listResidences">
+      <div
+        class="card"
+        style="width: 18rem"
+        *ngIf="residence.address == search || search == ''"
+      >
+        <img
+          src="{{ residence.image }}"
+          class="card-img-top"
+          [alt]="residence.name"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ residence.name }}</h5>
+          <p class="card-text">
+            <span *ngIf="residence.addressEtat">
+              <b>Address: </b> {{ residence.address }}</span
+            >
+            <br />
+            <span *ngIf="residence.status == 'Disponible'"
+              ><b>Status: </b> {{ residence.status }} <i class="bi bi-check"></i
+            ></span>
+            <span *ngIf="residence.status == 'En Construction'"
+              ><b>Status: </b> {{ residence.status }} <i class="bi bi-cone"></i
+            ></span>
+            <span *ngIf="residence.status == 'Vendu'"
+              ><b>Status: </b> {{ residence.status }} <i class="bi bi-x"></i
+            ></span>
+          </p>
+          <a
+            [routerLink]="['/residence/details/', residence.id]"
+            class="btn btn-primary"
+            >Details</a
+          >
+          <button class="btn btn-success" (click)="showLocation(residence.id)">
+            Show Location
+          </button>
+          <button
+            class="btn btn-warning"
+            (click)="addToFavoriteList(residence)"
+          >
+            Like
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <h1>Favorite Residences</h1>
+  <div>
     <div
       class="card"
       style="width: 18rem"
-      *ngFor="let residence of listResidences"
+      *ngFor="let residence of favoriteResidences"
     >
       <img
         src="{{ residence.image }}"
@@ -13,9 +69,32 @@
       />
       <div class="card-body">
         <h5 class="card-title">{{ residence.name }}</h5>
-        <p class="card-text"><b>Address: </b> {{ residence.address }}</p>
-        <a href="#" class="btn btn-primary">Details</a>
-        <button class="btn btn-success">Show Location</button>
+        <p class="card-text">
+          <span *ngIf="residence.addressEtat">
+            <b>Address: </b> {{ residence.address }}</span
+          >
+          <br />
+          <span *ngIf="residence.status == 'Disponible'"
+            ><b>Status: </b> {{ residence.status }} <i class="bi bi-check"></i
+          ></span>
+          <span *ngIf="residence.status == 'En Construction'"
+            ><b>Status: </b> {{ residence.status }} <i class="bi bi-cone"></i
+          ></span>
+          <span *ngIf="residence.status == 'Vendu'"
+            ><b>Status: </b> {{ residence.status }} <i class="bi bi-x"></i
+          ></span>
+        </p>
+        <a
+          [routerLink]="['/residence/details/', residence.id]"
+          class="btn btn-primary"
+          >Details</a
+        >
+        <button class="btn btn-success" (click)="showLocation(residence.id)">
+          Show Location
+        </button>
+        <button class="btn btn-warning" (click)="addToFavoriteList(residence)">
+          Likessssss
+        </button>
       </div>
     </div>
   </div>

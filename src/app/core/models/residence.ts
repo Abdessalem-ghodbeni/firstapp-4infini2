@@ -4,4 +4,5 @@ export class Residence {
   address!: string;
   image!: string;
   status!: string;
+  addressEtat!: boolean;
 }
